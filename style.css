@@ -1,0 +1,35 @@
+.addTaskToList {
+    margin-left: 3%;
+}
+
+.taskTitle {
+    margin-left: 5%;
+}
+
+.task {
+    list-style-type: none;
+}
+
+
+
+.totalCount,
+.completedCount,
+.pendingCount {
+    font-weight: 300;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 4%;
+}
+
+
+.completedCountLable {
+    color: green;
+}
+
+
+.pendingCountLable {
+    color: red;
+}
+
+/* .taskDeletBtn {
+    visibility: hidden;
+} */
