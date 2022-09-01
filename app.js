@@ -1,3 +1,4 @@
+import { deleteTaskHandler,updateTaskStatusHandler } from './connecter.js';
 const app = document.querySelector('.app');
 
 export const domElements = {
@@ -19,7 +20,7 @@ export const domElements = {
     get getTaskHistory() { return this.taskHistory }
 };
 
-
+//------------------------------------------------------------- prepare task-----------
 export function insertTaskIntoDOM(node) {
     domElements.getTaskLists.appendChild(node);
 }
@@ -32,7 +33,7 @@ export function prepareTask(value, id, status) {
     let taskcheckbox;
     status ? taskcheckbox = createEleme('input', { 'type': 'checkbox', 'class': 'taskcheckbox', 'id': id / 100, 'checked': '' }) : '';
     status ? '' : taskcheckbox = createEleme('input', { 'type': 'checkbox', 'class': 'taskcheckbox', 'id': id / 100 });
-    taskcheckbox.addEventListener('click', (e) => { taskStatusUpdateHandler(e) });
+    taskcheckbox.addEventListener('click', (e) => { updateTaskStatusHandler(e) });
     taskDelBtn.addEventListener('click', (e) => { deleteTaskHandler(e) });
     appendElements(liElement, task, taskcheckbox, taskDelBtn);
     return liElement;
@@ -57,3 +58,28 @@ function appendElements(parentNode, ...appChild) {
         parentNode.appendChild(appChild[i]);
     }
 }
+//----------------------------------------------------------END prepare task------------------
+
+ //------------------------------------------------------------ delete task---------------------------
+ export function deleteTaskInUI(element){
+ element.remove()
+ }
+
+export function deleteTaskInObject(obj,id){
+    delete obj[id];
+ }
+
+
+ //------------------------------------------------------task status update----------------------
+ export function updateTaskStatus(obj,id){
+    if(obj[id].status){
+        obj[id].status=false;
+    }else{
+        obj[id].status=true;
+    }
+ } 
+
+
+ //-----------------------------------------counter update------------------------
+ 
+
