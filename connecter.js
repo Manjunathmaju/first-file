@@ -1,85 +1,48 @@
-// function previous(){import { localStorageHandler, setvalueToObject } from './storage.js';
-// import { prepareTask, insertTaskIntoDOM, domElements, deleteTaskInUI, deleteTaskInObject, updateTaskStatus } from './app.js';
+import { localStorageHandler, setvalueToObject, getobject, counterTaskHandler } from './storage.js';
 
+export function taskStatus() {
+    const setCount = counterTaskHandler.setCounter;
+    const obj = getobject();
+    const keys = Object.keys(obj);
+    keys.forEach(element => {
+        if (obj[element].status) {
+            setCount.totalTask();
+            setCount.completedTask();
+        } else {
+            setCount.totalTask();
+            setCount.pendingTask();
+        }
+    });
+    return counterTaskHandler.getCounter;
+}
 
-// export let newTasksObj = {};
+export let handleObject = {
+    prepareObject(value, id) {
+        setvalueToObject.saveNewObj(value, id);
+    },
+    lodeTasksToObj(obj) {
+        setvalueToObject.saveOldObj(obj);
+    },
+    deleteTaskOnObj(id) {
+        setvalueToObject.deleteObjValue(id);
+    },
+    updateTaskOnOnbect(id) {
+        setvalueToObject.updateObjValue(id)
+    }
 
-// export const getObjectIdValue = {
-//     getNewTask() {
-//         return domElements.getnewText.value;
-//     },
-//     getTaskId() {
-//         const id = getObjectKeysAsArray(newTasksObj);
-//         return id[id.length - 1];
-//     }
-// };
+}
 
-// function getObjectKeysAsArray(obj) {
-//     console.log(obj)
-//     if (Object.keys(obj)) {
-//         return Object.keys(obj);
-//     }
-// }
+export function addTaskOnStorage(name, wantToStore) {
+    if (wantToStore) {
+        localStorageHandler.setData(name)
+    }
+}
 
+export function getDataFromDB() {
+    if (localStorage.hasOwnProperty('user1')) {
+        return JSON.parse(localStorageHandler.getData('user1'));
+    } else {
+        return false;
+    }
+}
 
-// export function prepareObject() {
-//     setvalueToObject.prepareObjectForLocal(getObjectIdValue.getNewTask(), newTasksObj);
-
-// }
-
-// export function addNewTaskOnUi() {
-//     const task = getObjectIdValue.getNewTask();
-//     const id = getObjectIdValue.getTaskId();
-//     const taskElement = prepareTask(task, id, false);
-//     insertTaskIntoDOM(taskElement);
-// }
-
-// export function addTaskOnStorage() {
-//     localStorageHandler.setData('user1', newTasksObj)
-// }
-
-// export function getDataFromDB() {
-//     newTasksObj = JSON.parse(localStorageHandler.getData('user1'));
-// }
-
-// export function addDbTaskOnUI() {
-//     const idArray = getObjectKeysAsArray(newTasksObj);
-//     loadDbTaskOnUI(newTasksObj, idArray);
-// }
-
-// function loadDbTaskOnUI(object, arr) {
-//     arr.forEach(key => {
-//         let obj = object[key];
-//         const taskElement = prepareTask(obj.task, obj.id, obj.status)
-//         insertTaskIntoDOM(taskElement);
-//     })
-// }
-
-// export function updateTaskStatusHandler(e) {
-//     const id = getElementId.getParentelementID(e);
-//     updateTaskStatus(newTasksObj, id);
-//     localStorageHandler.setData(newTasksObj);
-
-// }
-
-
-
-// export function deleteTaskHandler(e) {
-//     const id = getElementId.getParentelementID(e);
-//     const domElement = element.getElement(id);
-//     deleteTaskInUI(domElement);
-//     deleteTaskInObject(newTasksObj, id);
-//     localStorageHandler.setData(newTasksObj);
-// }
-
-// const element = {
-//     getElement(id) {
-//         return document.getElementById(id)
-//     }
-// }
-
-// const getElementId = {
-//     getParentelementID(e) {
-//         return e.target.parentNode.id;
-//     }
-// }}

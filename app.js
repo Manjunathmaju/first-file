@@ -1,5 +1,4 @@
-// function previous(){import { deleteTaskHandler,updateTaskStatusHandler } from './connecter.js';
-// const app = document.querySelector('.app');
+import { deleteTaskHandler, updateTaskStatusHandler } from './connecter.js';
 
 // export const domElements = {
 //     textBtn: app.querySelector('.addBtn'),
@@ -20,7 +19,7 @@
 //     get getTaskHistory() { return this.taskHistory }
 // };
 
-// //------------------------------------------------------------- prepare task-----------
+//------------------------------------------------------------- prepare task-----------
 // export function insertTaskIntoDOM(node) {
 //     domElements.getTaskLists.appendChild(node);
 // }
@@ -58,30 +57,30 @@
 //         parentNode.appendChild(appChild[i]);
 //     }
 // }
-// //----------------------------------------------------------END prepare task------------------
+//----------------------------------------------------------END prepare task------------------
 
-//  //------------------------------------------------------------ delete task---------------------------
-//  export function deleteTaskInUI(element){
-//  element.remove()
-//  }
+//------------------------------------------------------------ delete task---------------------------
+export function deleteTaskInUI(element) {
+    element.remove()
+}
 
-// export function deleteTaskInObject(obj,id){
-//     delete obj[id];
-//  }
-
-
-//  //------------------------------------------------------task status update----------------------
-//  export function updateTaskStatus(obj,id){
-//     if(obj[id].status){
-//         obj[id].status=false;
-//     }else{
-//         obj[id].status=true;
-//     }
-//  } 
+export function deleteTaskInObject(obj, id) {
+    delete obj[id];
+}
 
 
-//  //-----------------------------------------counter update------------------------
- 
+//------------------------------------------------------task status update----------------------
+export function updateTaskStatus(obj, id) {
+    if (obj[id].status) {
+        obj[id].status = false;
+    } else {
+        obj[id].status = true;
+    }
+}
 
-// }
+
+ //-----------------------------------------counter update------------------------
+
+
+
 
