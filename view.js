@@ -28,11 +28,7 @@ let domElements = {
 
 };
 
-// console.log(domElements);
-
 function init() {
-    // console.log(domElements.getNewText() + 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    // console.log(domElements.getTaskLists());
     registerEventHandlers();
 }
 
@@ -66,11 +62,9 @@ function counterHandeler() {
     domElements.getTotalCount.innerHTML = counter.totalCount();
     domElements.getCompletedCount.innerHTML = counter.completedCount();
     domElements.getPendingCount.innerHTML = counter.pendingCount();
-
 }
 
 function buttonsEventHandeler() {
-
     domElements.getTextBtn.addEventListener('click', addTaskActions);
     // domElements.getTaskHistory.addEventListener('click', updateCounter);
 
@@ -108,9 +102,21 @@ function updateTaskStatusHandler(e) {
 
 function deleteTaskHandler(e) {
     const id = getElemProp.id(e);
+    const task=handleObject.getTaskOnObject(id);
+    if(task.status){
+    if(confirm('You want to delete the task?')){
+        deleteTask(id);
+    }
+}else{
+    if(confirm('This task is not completed! you want to delete?')){
+        deleteTask(id);
+        }
+}
+}
+function deleteTask(id){
     handleObject.deleteTaskOnObj(id);
-    addTaskOnStorage('user1', true)
-    deleteTaskOnUI(id)
+        addTaskOnStorage('user1', true)
+        deleteTaskOnUI(id)
 }
 
 function deleteTaskOnUI(id) {

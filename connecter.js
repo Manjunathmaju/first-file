@@ -28,6 +28,9 @@ export let handleObject = {
     },
     updateTaskOnOnbect(id) {
         setvalueToObject.updateObjValue(id)
+    },
+    getTaskOnObject(id){
+        return setvalueToObject.getTask(id)
     }
 
 }

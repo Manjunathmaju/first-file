@@ -40,27 +40,22 @@ export const setvalueToObject = {//not in storage layer
         newTasksObj = obj;
     },
     saveNewObj(value, id) {
-        // let id = this.uniqueValue();
         newTasksObj[id] = { 'id': id, 'task': value, 'status': false };
     },
     updateObjValue(key) {
-        // const objId = newTasksObj[id];
-        if (newTasksObj[key].status) {
-            newTasksObj[key].status = false;
-            // counterTasks.pending += 1;
-        } else {
-            newTasksObj[key].status = true;
-            // counterTasks.completed += 1;
-        }
+        const objTask=newTasksObj[key];
+        objTask.status?objTask.status = false:objTask.status = true;
     },
     deleteObjValue(key) {
         delete newTasksObj[key];
+    },
+    getTask(id){
+        return newTasksObj[id];
     }
 }
 
 export const localStorageHandler = {
     getData(key) {
-
         return localStorage.getItem(key);
     },
     setData(key) {
